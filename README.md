@@ -1,31 +1,21 @@
 # URL Shortener
 
-A simple URL shortener web application using Node.js, Express, MongoDB, and shortid.
-
-## Table of Contents
-
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Getting Started](#getting-started)
-- [Usage](#usage)
-- [Contributing](#contributing)
-- [License](#license)
+A simple URL shortening web application built with Node.js, Express, and MongoDB.
 
 ## Features
 
-- Shorten long URLs into unique, easy-to-remember short URLs.
-- Redirect users to the original URL when they visit the short URL.
-- Basic front-end interface for URL shortening.
-
-## Prerequisites
-
-Before you begin, ensure you have met the following requirements:
-
-- Node.js installed
-- npm (Node Package Manager) installed
-- MongoDB installed and running locally
+- Shorten long URLs to concise and shareable short links.
+- Copy short URLs to the clipboard with a click.
+- Toggle visibility of the footer for a cleaner user interface.
 
 ## Getting Started
+
+### Prerequisites
+
+- Node.js installed
+- MongoDB installed and running
+
+### Installation
 
 1. Clone the repository:
 
@@ -33,29 +23,44 @@ Before you begin, ensure you have met the following requirements:
    git clone https://github.com/ApiError/Url-Shortener.git
    ```
 
-2. Install dependencies:
+2. Navigate to the project directory:
 
    ```bash
    cd url-shortener
+   ```
+
+3. Install dependencies:
+
+   ```bash
    npm install
    ```
 
-3. Run the server:
+4. Open file named `config.json` in the project root:
 
-   ```bash
-   node app.js
+   ```json
+   {
+     "website_url": "http://localhost:3000" // Replace with your website URL
+   }
    ```
 
-   The server will start at `http://localhost:3000`.
+### Usage
 
-## Usage
+1. Start the application:
 
-1. Open your web browser and navigate to `http://localhost:3000`.
-2. Enter a long URL in the input field.
-3. Click the "Shorten URL" button.
-4. The shortened URL will be displayed on the page.
-5. Copy and share the shortened URL.
+   ```bash
+   npm start
+   ```
 
-## Contributing
+2. Open your browser and visit [http://localhost:3000](http://localhost:3000).
 
-Contributions are welcome! If you have any ideas or improvements, please open an issue or submit a pull request.
+3. Enter a long URL in the input box and click "Shorten URL."
+
+4. Copy the generated short URL and share it!
+
+### Configuration
+
+You can customize the website URL by modifying the `config.json` file.
+
+## Contributors
+
+- [ApiError](https://github.com/ApiError/Url-Shortener)
