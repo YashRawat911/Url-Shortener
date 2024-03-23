@@ -1,7 +1,7 @@
 {
     "mongodb_url": "mongodb+srv://admin:admin@oreclemist-cloud.ou1xafw.mongodb.net/url-shortener",
     "port": 8080,
-    "website_url": "https://url.error.zc.al"
+    "website_url": "https://url.error.zc.al",
     "NOTES": "Remove In MongoDB ( ?retryWrites=true&w=majority ) EG:- mongodb+srv://USERNAME:PASSWORD@xx/ANY_NAME"
 }
   
