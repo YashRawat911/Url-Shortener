@@ -42,7 +42,7 @@
 
       const data = await response.json();
       const websiteUrl = await getWebsiteUrl();
-      const fullShortUrl = `${websiteUrl}/${data.shortUrl}`;
+      const fullShortUrl = `https://url.lykhost.link/${data.shortUrl} / ${websiteUrl}/${data.shortUrl}`;
 
       document.getElementById('shortUrl').innerText = `Short URL: `;
       const link = document.createElement('a');
