@@ -13,7 +13,7 @@
       <input type="text" id="originalUrl" placeholder="Enter your long URL">
       <button onclick="shortenUrl()">Shorten URL</button>
     </div>
-    <div id="shortUrls"></div>
+    <p id="shortUrl"></p>
     <button onclick="copyToClipboard()">Copy to Clipboard</button>
   </div>
   <div id="footer" class="footer">
@@ -44,10 +44,13 @@
       const websiteUrl = await getWebsiteUrl();
       const fullShortUrl = `${websiteUrl}/${data.shortUrl}`;
 
-      const shortUrlsContainer = document.getElementById('shortUrls');
-      const shortUrlElement = document.createElement('p');
-      shortUrlElement.innerHTML = `Short URL: <a href="${fullShortUrl}" target="_blank">${fullShortUrl}</a>`;
-      shortUrlsContainer.appendChild(shortUrlElement);
+      document.getElementById('shortUrl').innerText = `Short URL: `;
+      const link = document.createElement('a');
+      link.href = fullShortUrl;
+      link.textContent = fullShortUrl;
+      link.target = '_blank';
+      document.getElementById('shortUrl').appendChild(link);
+      document.getElementById('shortUrl').dataset.fullUrl = fullShortUrl; // Store the full URL in a data attribute
     }
 
     function isValidUrl(url) {
@@ -57,25 +60,22 @@
     }
 
     function copyToClipboard() {
-      const shortUrlElements = document.querySelectorAll('#shortUrls p a');
+      const shortUrlElement = document.getElementById('shortUrl');
+      const fullUrl = shortUrlElement.dataset.fullUrl;
 
-      if (!shortUrlElements.length) {
+      if (!fullUrl) {
         displayError('No URL to copy.');
         return;
       }
 
-      let copiedUrls = '';
-      shortUrlElements.forEach((element, index) => {
-        copiedUrls += `Short URL #${index + 1} - ${element.href}\n`;
-      });
+      const tempInput = document.createElement('input');
+      tempInput.value = fullUrl;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
 
-      navigator.clipboard.writeText(copiedUrls)
-        .then(() => {
-          alert('Copied to clipboard!');
-        })
-        .catch(err => {
-          console.error('Failed to copy: ', err);
-        });
+      alert('Copied to clipboard!');
     }
 
     async function getWebsiteUrl() {
